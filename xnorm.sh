@@ -35,7 +35,7 @@ while true; do
 		GET_ERROR;
 		printf "%18b%b\n\n" "$FILE" " /> $COLOR$ERRR$RESET";
 		read -s -n 1 INPUT;
-		if [ $INPUT = 'y' ]; then
+		if [ "$INPUT" = "y" ] || [ "$INPUT" = "" ]; then
 			if ! command -v $EDITOR &> /dev/null;
 				then EDITOR=$ALT_EDITOR; fi
 			$EDITOR $FILE "+call cursor($YPOS, $XPOS)";
