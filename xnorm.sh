@@ -7,10 +7,10 @@ RESET="\e[0m"
 NVIM="nvim"
 VIM="vim"
 EDITOR=$NVIM
-ARG=$1
+ALT_EDITOR=$VIM
 
 function NORM {
-	SRCH=`norminette $ARG`
+	SRCH=`norminette $1`
 	FILE=`grep -i "error\!" <<< "$SRCH" \
 	| awk '{print $1}' \
 	| head -1 \
@@ -18,7 +18,7 @@ function NORM {
 }
 
 function GET_ERROR {
-	LINE=`sed -n 2p <<< "$SRCH"`
+	LINE=`grep -i "Error:" <<< "$SRCH" | sed -n 1p`
 	ERRR=`awk '{print $2}' <<< "$LINE"`
 	XPOS=`awk '{print $6}' <<< "$LINE" \
 	| grep -o '[0-9]\+'`
@@ -37,8 +37,8 @@ while true; do
 		read -s -n 1 INPUT;
 		if [ $INPUT = 'y' ]; then
 			if ! command -v $EDITOR &> /dev/null;
-				then EDITOR=$VIM; fi;
+				then EDITOR=$ALT_EDITOR; fi
 			$EDITOR $FILE "+call cursor($YPOS, $XPOS)";
 		else break; fi
-	else break; fi
+	else printf "\n"; break; fi
 done
