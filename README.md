@@ -1,3 +1,3 @@
 # xnorm
-Semi-auto Norminette checker
+Semi-auto Norminette checker  
 ![Screenshot](rambo_gun.gif)
