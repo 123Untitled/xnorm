@@ -4,10 +4,8 @@
 
 COLOR="\e[32m"
 RESET="\e[0m"
-NVIM="nvim"
-VIM="vim"
-EDITOR=$NVIM
-ALT_EDITOR=$VIM
+EDITOR="nvim"
+ALT_EDITOR="vim"
 
 function NORM {
 	SRCH=`norminette $1`
