@@ -8,7 +8,7 @@ EDITOR="nvim"
 ALT_EDITOR="vim"
 GREP="grep --color=never"
 
-function NORM {
+function NORM() {
 	# execute norminette command with arg
 	SRCH=`norminette $1`
 	# search file error pattern and get file name
@@ -18,7 +18,7 @@ function NORM {
 	| $GREP -o '[^:]*'`
 }
 
-function GET_ERROR {
+function GET_ERROR() {
 	# get first error line
 	LINE=`$GREP -i "Error:" <<< "$SRCH" | sed -n 1p`
 	# get the error name
@@ -35,7 +35,7 @@ function GET_ERROR {
 printf "\n%18b %b\n" "X N O R M" "$COLOR><$RESET"
 while true; do
 	# norminette
-	NORM;
+	NORM "$1";
 	# test if there is errors
 	if [ -n "$FILE" ]; then
 		GET_ERROR;
