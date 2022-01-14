@@ -1,5 +1,5 @@
 # xnorm
-### Semi-auto Norminette checker  
+### Semi-auto Norminette fixer  
 #### Usage
 - Xnorm find first norm error, open (n)vim at exact position and let you fix it !   
 - Press 'y' or 'enter' to edit, another key to exit.
