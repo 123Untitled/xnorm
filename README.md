@@ -9,4 +9,4 @@
 ```bash
 alias xnorm='XN() { bash ~/$YOURPATH/xnorm/xnorm.sh "$1"; } ;XN'
 ```
-![Alt Text](https://c.tenor.com/_cY2OJVxVeoAAAAd/shoot-angry.gif)
+![Alt Text](demo.gif)
