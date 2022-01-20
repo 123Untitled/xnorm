@@ -7,6 +7,6 @@
 #### Config
 - Create alias in your shellrc 
 ```bash
-alias xnorm='XN() { bash ~/$YOURPATH/xnorm/xnorm.sh "$1"; } ;XN'
+alias xnorm='XN() { bash ~/$YOURPATH/xnorm/xnorm.sh "$@"; } ;XN'
 ```
 ![Alt Text](demo.gif)
