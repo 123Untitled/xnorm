@@ -10,9 +10,9 @@ GREP="grep --color=never"
 
 function NORM() {
 	# execute norminette command with arg
-	SRCH=`norminette $1`
+	SRCH=`norminette $@`
 	# search file error pattern and get file name
-	FILE=`$GREP -i "error\!" <<< "$SRCH" \
+	FILE=`$GREP -i 'error\!' <<< "$SRCH" \
 	| awk '{print $1}' \
 	| head -1 \
 	| $GREP -o '[^:]*'`
@@ -20,7 +20,7 @@ function NORM() {
 
 function GET_ERROR() {
 	# get first error line
-	LINE=`$GREP -i "Error:" <<< "$SRCH" | sed -n 1p`
+	LINE=`$GREP -i 'Error:' <<< "$SRCH" | sed -n 1p`
 	# get the error name
 	ERRR=`awk '{print $2}' <<< "$LINE"`
 	# get the x position error
@@ -35,7 +35,7 @@ function GET_ERROR() {
 printf "\n%18b %b\n" "X N O R M" "$COLOR><$RESET"
 while true; do
 	# norminette
-	NORM "$1";
+	NORM "$@";
 	# test if there is errors
 	if [ -n "$FILE" ]; then
 		GET_ERROR;
@@ -44,7 +44,7 @@ while true; do
 		# user input read
 		read -s -n 1 INPUT;
 		# test input user
-		if [ "$INPUT" = "y" ] || [ "$INPUT" = "" ]; then
+		if [ "$INPUT" = 'y' ] || [ "$INPUT" = '' ]; then
 			# check text editor exist
 			if ! command -v $EDITOR &> /dev/null;
 				# replace by an alternative
